@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dream Room 🌙</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Georgia, serif;
+    background: #080b20;
+    color: white;
+}
+
+.room {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #070a20 0%,
+            #151b3c 55%,
+            #302747 100%
+        );
+}
+
+/* Moon */
+
+.moon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    background: #fff7c7;
+
+    top: 8%;
+    right: 13%;
+
+    box-shadow:
+        0 0 30px #fff7c7,
+        0 0 70px rgba(255,247,199,0.4);
+}
+
+/* Stars */
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+
+    background: white;
+    border-radius: 50%;
+
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+/* Window */
+
+.window {
+    position: absolute;
+
+    width: 330px;
+    height: 280px;
+
+    top: 15%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border: 12px solid #3d2b31;
+
+    background: #080b20;
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,0.5);
+
+    cursor: pointer;
+}
+
+.window::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 100%;
+
+    background: #3d2b31;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.window::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 8px;
+
+    background: #3d2b31;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Floor */
+
+.floor {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+    height: 25%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #382735 0px,
+            #382735 70px,
+            #432d3a 72px
+        );
+}
+
+/* Bed */
+
+.bed {
+    position: absolute;
+
+    bottom: 18%;
+    left: 8%;
+
+    width: 430px;
+    height: 150px;
+
+    background: #624a69;
+
+    border-radius: 20px 20px 5px 5px;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.4);
+}
+
+.pillow {
+    position: absolute;
+
+    width: 130px;
+    height: 60px;
+
+    background: #d9c9dd;
+
+    border-radius: 20px;
+
+    top: 15px;
+    left: 20px;
+}
+
+/* Lamp */
+
+.lamp {
+    position: absolute;
+
+    right: 10%;
+    bottom: 25%;
+
+    cursor: pointer;
+}
+
+.lamp-shade {
+    width: 90px;
+    height: 60px;
+
+    background: #d9a95b;
+
+    clip-path: polygon(
+        15% 0,
+        85% 0,
+        100% 100%,
+        0 100%
+    );
+
+    box-shadow:
+        0 0 20px #e4b86b;
+}
+
+.lamp-stick {
+    width: 8px;
+    height: 80px;
+
+    background: #c5a66b;
+
+    margin: auto;
+}
+
+.lamp-base {
+    width: 80px;
+    height: 12px;
+
+    background: #c5a66b;
+
+    border-radius: 20px;
+
+    margin: auto;
+}
+
+/* Table */
+
+.table {
+    position: absolute;
+
+    right: 8%;
+    bottom: 18%;
+
+    width: 190px;
+    height: 100px;
+
+    background: #4a3030;
+
+    border-radius: 10px;
+}
+
+/* Book */
+
+.book {
+    position: absolute;
+
+    right: 20%;
+    bottom: 31%;
+
+    width: 65px;
+    height: 45px;
+
+    background: #b84f6d;
+
+    transform: rotate(-8deg);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 10px rgba(0,0,0,0.4);
+}
+
+/* Title */
+
+.title {
+    position: absolute;
+
+    top: 3%;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 34px;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 15px #c7b8ff;
+}
+
+.subtitle {
+    position: absolute;
+
+    top: 8%;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #c8c2df;
+}
+
+/* Message */
+
+.message {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    width: min(400px, 85%);
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(20,15,40,0.95);
+
+    border: 1px solid #bda8ff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 40px rgba(170,130,255,0.4);
+
+    transition: 0.4s;
+
+    z-index: 20;
+}
+
+.message.show {
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+.message button {
+    margin-top: 20px;
+
+    padding: 10px 25px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: #bda8ff;
+
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="room">
+
+    <div class="title">
+        DREAM ROOM
+    </div>
+
+    <div class="subtitle">
+        A little place under the stars 🌙
+    </div>
+
+    <div class="moon"></div>
+
+    <div class="window"></div>
+
+    <div class="floor"></div>
+
+    <div class="bed">
+        <div class="pillow"></div>
+    </div>
+
+    <div class="table"></div>
+
+    <div class="lamp" onclick="toggleLamp()">
+        <div class="lamp-shade"></div>
+        <div class="lamp-stick"></div>
+        <div class="lamp-base"></div>
+    </div>
+
+    <div class="book" onclick="openBook()"></div>
+
+    <div class="message" id="message">
+
+        <h2 id="messageTitle">
+            🌙 A Little Secret
+        </h2>
+
+        <p id="messageText">
+            This room has a few secrets waiting to be discovered.
+        </p>
+
+        <button onclick="closeMessage()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* Create stars */
+
+const room = document.querySelector(".room");
+
+for(let i = 0; i < 100; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 45 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    room.appendChild(star);
+}
+
+
+/* Book */
+
+function openBook(){
+
+    document.getElementById("messageTitle").innerText =
+        "📖 The Little Book";
+
+    document.getElementById("messageText").innerText =
+        "Some of the nicest moments are the quiet ones.";
+
+    document.getElementById("message").classList.add("show");
+}
+
+
+/* Lamp */
+
+function toggleLamp(){
+
+    document.body.classList.toggle("lampOn");
+
+    document.getElementById("messageTitle").innerText =
+        "💡 The Lamp";
+
+    document.getElementById("messageText").innerText =
+        "You found the lamp! More secrets are hidden around the room.";
+
+    document.getElementById("message").classList.add("show");
+}
+
+
+/* Close */
+
+function closeMessage(){
+
+    document.getElementById("message")
+        .classList.remove("show");
+}
+
+</script>
+
+</body>
+</html>
