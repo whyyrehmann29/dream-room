@@ -455,8 +455,21 @@ function toggleLamp(){
 }
 
 
-/* Close */
+/* Close */* Window */
 
+const windowElement = document.querySelector(".window");
+
+windowElement.addEventListener("click", () => {
+
+    document.getElementById("messageTitle").innerText =
+        "🌙 The Night Sky";
+
+    document.getElementById("messageText").innerText =
+        "Sometimes the quietest nights hold the most beautiful thoughts. ✨";
+
+    document.getElementById("message").classList.add("show");
+
+});
 function closeMessage(){
 
     document.getElementById("message")
